@@ -1,4 +1,8 @@
 <?php                           
+  if (!$_POST['Login']) { // the user did not click the Login button, ie. it's their first visit to the website
+      include("LoginPage.php");
+  }
+  
   if ($_POST['Login'])   // the user clicked the Login button
   {
       // connect to database - Ignore this bit, it's just setting up the database.
@@ -22,16 +26,14 @@
          }
          else
          {
-           // username exists but password incorrect
+           $message = "You have entered an incorrect password. Please try again";
            include("LoginPage.php");
          }
       }
       elseif ($num == 0)  // username not found in database
       {
-         include("LoginPage.php");
+          $message = "The username you entered does not exist. Please try again";
+          include("LoginPage.php");
       }
   }   
-  else {  // the uer did not click the Login button, ie. it's their first visit to the website
-      include("LoginPage.php");
-  }
 ?>

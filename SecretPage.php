@@ -1,5 +1,7 @@
 <html>
-<head><title>Secret Page </title></head>
+<head>
+    <title>Secret Page </title></head>
 <body>
-<p>This is my secret page.
-</body></html>
+    <p>This is my secret page.</p>
+</body>
+</html>
