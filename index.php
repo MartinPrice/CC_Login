@@ -1,4 +1,5 @@
-<?php                           
+<?php
+  session_start();
   if (!$_POST['Login']) { // the user did not click the Login button, ie. it's their first visit to the website
       include("LoginPage.php");
   }
@@ -22,7 +23,8 @@
          $row = mysqli_fetch_assoc($result2);
          if($row)  // username exists and password correct
          {
-           header("Location: SecretPage.php");
+           $_SESSION['WhoLoggedOn'] = $_POST[username];
+             header("Location: Auctions.php");
          }
          else
          {
