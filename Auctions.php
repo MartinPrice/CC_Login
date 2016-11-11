@@ -5,6 +5,7 @@
 <head>
     <title>Auctions Page</title></head>
 <body>
+    <form action="Item.php" method="post">
     <p>This is my secret page.</p>
     <?php
         if(isset($_SESSION['WhoLoggedOn'])) {
@@ -25,12 +26,13 @@
                 echo $value;
                 echo "</td>";
             }
-            // echo '<td><a href="Item.php">Item details</a></td>';
-            echo '<td><input type="button" name="$row['item_id']" value="Item details"></td>';
-            // echo "<td>".$row['item_id']."</td>";
+            echo "<td>";
+            echo '<button name="submit" value="'.$row['item_id'].'" type="submit" title="Submit">'.$row['item_id'].'</button>';
+            echo "</td>";
             echo "</tr>";
         }
-        echo "</table>";       
+        echo "</table>";      
     ?>
+    </form>
 </body>
 </html>
