@@ -3,8 +3,12 @@
 ?>
 <html>
 <head>
-    <title>Auctions Page</title></head>
+    <title>Auctions Page</title>
+</head>
+    <link href="styles/style.css" rel="stylesheet" type="text/css" />
 <body>
+    <div class="PageLayout">
+    <?php include 'Header.php'; ?>
     <form action="Item.php" method="post">
     <p>This is my secret page.</p>
     <?php
@@ -18,7 +22,7 @@
         
         $sql = "SELECT * FROM tbItems;";
         $result = mysqli_query($cxn,$sql) or die("Couldn't execute query 1");
-        echo '<table border="1" bgcolor="#00FF00">';
+        echo '<table>';
         while($row = mysqli_fetch_assoc($result)) {
             echo "<tr>";
             foreach($row as $field => $value) {
@@ -34,5 +38,6 @@
         echo "</table>";      
     ?>
     </form>
+    </div>
 </body>
 </html>

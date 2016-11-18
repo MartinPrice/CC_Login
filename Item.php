@@ -16,7 +16,10 @@
 <html>
 <head>
     <title>Items Page</title></head>
+    <link href="styles/style.css" rel="stylesheet" type="text/css" />
 <body>
+    <div class="PageLayout">
+    <?php include 'Header.php' ?>
 <form action=<?php echo $_SERVER['PHP_SELF']?> method="POST"> 
     <h1>Item details</h1>
     <?php
@@ -31,7 +34,7 @@
         // **************** $sql = "SELECT * FROM tbItems where item_id = '".$_POST['submit']."';";
         $sql = "SELECT * FROM tbItems where item_id = '".$_SESSION['itemNumber']."';";
         $result = mysqli_query($cxn,$sql) or die("Couldn't execute query 1");
-        echo '<table border="1" bgcolor="#00FF00">';
+        echo '<table>';
         while($row = mysqli_fetch_assoc($result)) {
             echo "<tr>";
             foreach($row as $field => $value) {
@@ -55,7 +58,7 @@
         // ****************** $sql = "SELECT item_amount, item_bidder FROM tbBids where item_id = '".$_POST['submit']."' ORDER BY item_amount DESC LIMIT 1;";
         $sql = "SELECT item_amount, item_bidder FROM tbBids where item_id = '".$_SESSION['itemNumber']."' ORDER BY item_amount DESC LIMIT 1;";
         $result = mysqli_query($cxn,$sql) or die("Couldn't execute query 2");
-        echo '<table border="1" bgcolor="#00FF00">';
+        echo '<table>';
         while($row = mysqli_fetch_assoc($result)) {
             echo "<tr>";
             foreach($row as $field => $value) {
@@ -76,5 +79,6 @@
         echo "</table>";
     ?>
 </form>
+</div>
 </body>
 </html>
