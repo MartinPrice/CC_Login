@@ -1,5 +1,9 @@
 <?php
     session_start();
+    if (@$_SESSION['auth'] != "yes") {
+        header("Location: LoginPage.php");
+        exit();
+    }
     if ($_POST['submit']) {
         $_SESSION['itemNumber'] = $_POST['submit'];
     }

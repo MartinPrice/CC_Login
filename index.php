@@ -24,7 +24,8 @@
          if($row)  // username exists and password correct
          {
            $_SESSION['WhoLoggedOn'] = $_POST[username];
-             header("Location: Auctions.php");
+           $_SESSION['auth'] = "yes";
+           header("Location: Auctions.php");
          }
          else
          {

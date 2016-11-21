@@ -1,5 +1,9 @@
 <?php
     session_start();
+    if (@$_SESSION['auth'] != "yes") {
+        header("Location: LoginPage.php");
+        exit();
+    }
 ?>
 <html>
 <head>
@@ -20,9 +24,21 @@
         $db = mysqli_select_db($connection, "CustomerDirectory") or die ("Couldn't select database.");
         $cxn = $connection;
         
-        $sql = "SELECT * FROM tbItems;";
+        $sql = "SELECT item_name, item_description, item_seller, item_location, "
+                . "(SELECT item_amount FROM tbBids WHERE item_id = tbItems.item_id ORDER BY item_amount DESC LIMIT 1), "
+                . "(SELECT item_bidder FROM tbBids WHERE item_id = tbItems.item_id ORDER BY item_amount DESC LIMIT 1), "
+                . "item_id "
+                . "FROM tbItems;";
         $result = mysqli_query($cxn,$sql) or die("Couldn't execute query 1");
         echo '<table>';
+        echo '<tr>';
+        echo '<th>Item</th>';
+        echo '<th>Description</th>';
+        echo '<th>Seller</th>';
+        echo '<th>Location</th>';
+        echo '<th>Top Bid</th>';
+        echo '<th>Top Bidder</th>';
+        echo '</tr>';
         while($row = mysqli_fetch_assoc($result)) {
             echo "<tr>";
             foreach($row as $field => $value) {
@@ -35,7 +51,7 @@
             echo "</td>";
             echo "</tr>";
         }
-        echo "</table>";      
+        echo "</table>";
     ?>
     </form>
     </div>
