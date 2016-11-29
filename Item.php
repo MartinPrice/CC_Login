@@ -21,11 +21,14 @@
 <head>
     <title>Items Page</title>
     <link href="styles/style.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
+    <script src="js/validation.js" type="text/javascript"></script>
 </head>
 <body>
     <div class="PageLayout">
     <?php include 'Header.php' ?>
-<form action=<?php echo $_SERVER['PHP_SELF']?> method="POST"> 
+<form action=<?php echo $_SERVER['PHP_SELF']?> method="POST" id="ItemForm"> 
     <h1>Item details</h1>
     <?php
         // connect to database - Ignore this bit, it's just setting up the database.
