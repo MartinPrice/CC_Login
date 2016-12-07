@@ -1,20 +1,20 @@
 $(document).ready(function() {
-  $("#ItemForm").validate(
+    $("#ItemForm").validate( {
+    rules:
     {
-      rules:
+      txtPlaceBid:
       {
-        txtPlaceBid:
-        {
-          required: true
-        }
-      },
-      messages:
-      {
-        txtPlaceBid:
-        {
-          Required: "Please enter a bid"
-        }
+        required: true,
+        range:[0.10,200.00]
       }
-    });
+    },
+    messages:
+    {
+      txtPlaceBid:
+      {
+        required: "Please enter a bid",
+        range: "Please enter a value between 0.10 and 200.00"
+      }
+    }
+  });
 });
-
